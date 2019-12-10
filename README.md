@@ -10,7 +10,7 @@ Download to somewhere you will remember and launch in editor
 
 Dependencies
 
-Python 3.7
+Python 3.7+ (install from https://www.python.org/)
 
 Matplotlib
 
