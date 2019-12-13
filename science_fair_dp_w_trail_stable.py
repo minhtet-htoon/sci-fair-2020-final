@@ -15,6 +15,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import scipy.integrate as integrate
 import matplotlib.animation as animation
+import matplotlib as mpl
+
 
 """ Save before running"""
 
@@ -47,16 +49,18 @@ def derivs(state, t):
 
     return dydx
 
-# create a time array from 0..100 sampled at 0.05 second steps
+# create a time array from 0..100 sampled at 0.05 second steps (make this number as low as possible without slowing down your PC)
+# duration specifies simulation length (sec) 
 dt = 0.05
-t = np.arange(0.0, 120, dt)
+duration=180
+t = np.arange(0.0, duration, dt)
 
 # th1 and th2 are the initial angles (degrees)
 # w1 and w2 are the initial angular velocities (degrees per second)
 # th1 >= 79.15 for divergence
-th1 = 0
+th1 = 90
 w1 = 0.0
-th2 = 150
+th2 = 90
 w2 = 0.0
 sensitivity=1e9
 trail_secs = 10
@@ -90,19 +94,33 @@ y31 = -L1*cos(v[:, 0])
 x32 = L2*sin(v[:, 2]) + x31
 y32 = -L2*cos(v[:, 2]) + y31
 
+#No more math this is just graphics
 size=L1+L2
 
 fig = plt.figure(figsize = (8,8))
 ax = fig.add_subplot( xlim=(-size, size), ylim=(-size, size))
 ax.grid()
+ax.set_facecolor('#181a1b') #plot color
+fig.patch.set_facecolor('#181a1b') #border color
+ax.spines['bottom'].set_color('white')
+ax.spines['top'].set_color('white')
+ax.spines['right'].set_color('white')
+ax.spines['left'].set_color('white')
+ax.xaxis.label.set_color('white')
+ax.yaxis.label.set_color('white')
+ax.tick_params(axis='x', colors='white')
+ax.tick_params(axis='y', colors='white')
+mpl.rcParams['text.color'] = '#ffffff'
+mpl.rcParams['axes.labelcolor'] = '#ffffff'
+mpl.rcParams['xtick.color'] = '#ffffff'
+mpl.rcParams['ytick.color'] = '#ffffff'
+line, = ax.plot([], [], 'o-', c='#ff8300', lw=2)
+line2, = ax.plot([], [], 'o-', c='#1b03a3', lw=2)
+line3, = ax.plot([], [], 'o-', c='#39ff14', lw=2)
 
-line, = ax.plot([], [], 'o-', lw=2)
-line2, = ax.plot([], [], 'o-', lw=2)
-line3, = ax.plot([], [], 'o-', lw=2)
-
-trail1, = ax.plot([], [], c='#1f77b4', solid_capstyle='butt', lw=1)
-trail2, = ax.plot([], [], c='#ff7f0e', solid_capstyle='butt', lw=1)
-trail3, = ax.plot([], [], c='#2ca02c', solid_capstyle='butt', lw=1)
+trail1, = ax.plot([], [], c='#1b03a3', solid_capstyle='butt', lw=1)
+trail2, = ax.plot([], [], c='#ff8300', solid_capstyle='butt', lw=1)
+trail3, = ax.plot([], [], c='#39ff14', solid_capstyle='butt', lw=1)
 
 time_template = 'time = %.1fs'
 time_text = ax.text(0.05, 0.9, '', transform=ax.transAxes)

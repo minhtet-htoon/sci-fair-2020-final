@@ -16,6 +16,7 @@ import matplotlib.pyplot as plt
 import scipy.integrate as integrate
 import matplotlib.animation as animation
 import matplotlib as mpl
+
 """ Save before running"""
 
 G =  9.8  # acceleration due to gravity, in m/s^2
@@ -59,9 +60,9 @@ w1 = 0.0
 th2 = 90
 w2 = 0.0
 sensitivity=1e9
-
+trail_secs = 10
 # This corresponds to max_trail time points.
-
+max_trail = int(trail_secs / dt)
 
 # initial stateS
 state = np.radians([th1, w1, th2, w2])
@@ -111,10 +112,12 @@ mpl.rcParams['xtick.color'] = '#ffffff'
 mpl.rcParams['ytick.color'] = '#ffffff'
 
 line, = ax.plot([], [], 'o-', c='#ff8300', lw=2)
-line2, = ax.plot([], [], 'o-', c='#1b03a3', lw=2)
+line2, = ax.plot([], [], 'o-', c='#15f4ee', lw=2)
 line3, = ax.plot([], [], 'o-', c='#39ff14', lw=2)
 
-
+trail1, = ax.plot([], [], c='#15f4ee', solid_capstyle='butt', lw=1)
+trail2, = ax.plot([], [], c='#ff8300', solid_capstyle='butt', lw=1)
+trail3, = ax.plot([], [], c='#39ff14', solid_capstyle='butt', lw=1)
 
 time_template = 'time = %.1fs'
 time_text = ax.text(0.05, 0.9, '', transform=ax.transAxes)
@@ -143,13 +146,20 @@ def animate(i):
    
     line3.set_data(thisx2, thisy2)
     
-    
+    imin= i- max_trail
+    if imin<0:
+        imin=0
+    trail1.set_data(x2[imin:i], y2[imin:i]) 
+    trail2.set_data(x22[imin:i], y22[imin:i]) 
+    trail3.set_data(x32[imin:i], y32[imin:i]) 
     
     time_text.set_text(time_template % (i*dt))
-    return line, line2, line3, time_text, 
+    return line, line2, line3, trail1, trail2, trail3, time_text, 
 
 ani = animation.FuncAnimation(fig, animate, np.arange(1, len(y)),
                               interval=30, blit=True, init_func=init)
 
 
 plt.show()
+
+
