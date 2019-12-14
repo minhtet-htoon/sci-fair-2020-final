@@ -17,3 +17,11 @@ Matplotlib
 Numpy
 
 Scipy
+
+Recommended items
+
+
+Git
+
+
+Anaconda
