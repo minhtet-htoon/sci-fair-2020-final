@@ -58,7 +58,7 @@ th1 = 90
 w1 = 0.0
 th2 = 90
 w2 = 0.0
-sensitivity=1e9
+sensitivity=1e1
 
 # This corresponds to max_trail time points.
 
@@ -95,8 +95,9 @@ size=L1+L2
 fig = plt.figure(figsize = (8,8))
 ax = fig.add_subplot( xlim=(-size, size), ylim=(-size, size))
 ax.grid()
-ax.set_facecolor('#181a1b') #plot color
-fig.patch.set_facecolor('#181a1b') #border color
+ax.set_facecolor('#000000') #plot color
+fig.patch.set_facecolor('#000000') #border color
+
 ax.spines['bottom'].set_color('white')
 ax.spines['top'].set_color('white')
 ax.spines['right'].set_color('white')
@@ -105,16 +106,16 @@ ax.xaxis.label.set_color('white')
 ax.yaxis.label.set_color('white')
 ax.tick_params(axis='x', colors='white')
 ax.tick_params(axis='y', colors='white')
+
 mpl.rcParams['text.color'] = '#ffffff'
 mpl.rcParams['axes.labelcolor'] = '#ffffff'
 mpl.rcParams['xtick.color'] = '#ffffff'
 mpl.rcParams['ytick.color'] = '#ffffff'
 
+
 line, = ax.plot([], [], 'o-', c='#ff8300', lw=2)
-line2, = ax.plot([], [], 'o-', c='#1b03a3', lw=2)
+line2, = ax.plot([], [], 'o-', c='#15f4ee', lw=2)
 line3, = ax.plot([], [], 'o-', c='#39ff14', lw=2)
-
-
 
 time_template = 'time = %.1fs'
 time_text = ax.text(0.05, 0.9, '', transform=ax.transAxes)

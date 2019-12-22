@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "C:\\Users\\waima.LAPTOP-BJQ0UNSN\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe"
+    "python.pythonPath": "C:\\Users\\waima.LAPTOP-BJQ0UNSN\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe",
+    "python.formatting.provider": "black"
 }

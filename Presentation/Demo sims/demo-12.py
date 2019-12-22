@@ -24,7 +24,7 @@ G =  9.8  # acceleration due to gravity, in m/s^2
 L1 = 1.0  # length of pendulum 1 in m
 L2 = 1.0  # length of pendulum 2 in m
 M1 = 1.0  # mass of pendulum 1 in kg
-M2 = 1.0  # mass of pendulum 2 in kg
+M2 = 3.0  # mass of pendulum 2 in kg
 
 """DO NOT TOUCH"""
 def derivs(state, t):
@@ -61,7 +61,7 @@ th1 = 90
 w1 = 0.0
 th2 = 90
 w2 = 0.0
-sensitivity=1e1
+sensitivity=1e9
 trail_secs = 10
 # This corresponds to max_trail time points.
 max_trail = int(trail_secs / dt)

@@ -59,9 +59,9 @@ t = np.arange(0.0, duration, dt)
 # th1 >= 79.15 for divergence
 th1 = 90
 w1 = 0.0
-th2 = 90
+th2 = th1
 w2 = 0.0
-sensitivity=1e1
+sensitivity=1e15
 trail_secs = 10
 # This corresponds to max_trail time points.
 max_trail = int(trail_secs / dt)

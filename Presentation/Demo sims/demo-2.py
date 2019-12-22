@@ -59,17 +59,17 @@ t = np.arange(0.0, duration, dt)
 # th1 >= 79.15 for divergence
 th1 = 90
 w1 = 0.0
-th2 = 90
+th2 = th1
 w2 = 0.0
-sensitivity=1e1
+sensitivity=1e2
 trail_secs = 10
 # This corresponds to max_trail time points.
 max_trail = int(trail_secs / dt)
 
 # initial stateS
 state = np.radians([th1, w1, th2, w2])
-state2 = np.radians([th1+ 1/sensitivity, w1, th2+ 1/sensitivity, w2])
-state3 = np.radians([th1-1/sensitivity, w1, th2- 1/sensitivity, w2])
+state2 = np.radians([th1+ th1/sensitivity, w1, th2+ th2/sensitivity, w2])
+state3 = np.radians([th1-th1/sensitivity, w1, th2- th2/sensitivity, w2])
 # integrate your ODE using scipy.integrate.
 y = integrate.odeint(derivs, state, t)
 z = integrate.odeint(derivs, state2, t)

@@ -57,11 +57,11 @@ t = np.arange(0.0, duration, dt)
 # th1 and th2 are the initial angles (degrees)
 # w1 and w2 are the initial angular velocities (degrees per second)
 # th1 >= 79.15 for divergence
-th1 = 90
+th1 = 50
 w1 = 0.0
-th2 = 90
+th2 = 0
 w2 = 0.0
-sensitivity=1e1
+sensitivity=1e9
 trail_secs = 10
 # This corresponds to max_trail time points.
 max_trail = int(trail_secs / dt)
