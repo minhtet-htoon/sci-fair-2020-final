@@ -60,7 +60,7 @@ th2 = 90
 w2 = 0.0
 sensitivity=1e1
 
-# This corresponds to max_trail time points.
+
 
 
 # initial stateS

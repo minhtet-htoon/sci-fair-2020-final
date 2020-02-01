@@ -68,8 +68,8 @@ max_trail = int(trail_secs / dt)
 
 # initial stateS
 state = np.radians([th1, w1, th2, w2])
-state2 = np.radians([th1+ 1/sensitivity, w1, th2+ 1/sensitivity, w2])
-state3 = np.radians([th1-1/sensitivity, w1, th2- 1/sensitivity, w2])
+state2 = np.radians([th1+ th1/sensitivity, w1, th2+ th2/sensitivity, w2])
+state3 = np.radians([th1-th1/sensitivity, w1, th2- th2/sensitivity, w2])
 # integrate your ODE using scipy.integrate.
 y = integrate.odeint(derivs, state, t)
 z = integrate.odeint(derivs, state2, t)
@@ -164,6 +164,7 @@ def animate(i):
 
 ani = animation.FuncAnimation(fig, animate, np.arange(1, len(y)),
                               interval=30, blit=True, init_func=init)
+
 
 
 plt.show()
